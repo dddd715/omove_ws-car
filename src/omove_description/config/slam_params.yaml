@@ -1,0 +1,124 @@
+slam_toolbox:
+  ros__parameters:
+    # 使用仿真时间；如果是真实机器人通常也可能设为 false 或根据时钟配置。
+    use_sim_time: true
+    # Plugin params
+    # 使用 Ceres 作为非线性优化求解器，负责扫描匹配和位姿优化。
+    solver_plugin: solver_plugins::CeresSolver
+    # Ceres 线性求解器类型，适合稀疏线性系统，计算效率较高。
+    ceres_linear_solver: SPARSE_NORMAL_CHOLESKY
+    # 预处理器类型，用于提高线性方程组求解的稳定性和收敛性。
+    ceres_preconditioner: SCHUR_JACOBI
+    # 使用 LM 算法作为信赖域优化策略，常用于非线性最小二乘问题。
+    ceres_trust_strategy: LEVENBERG_MARQUARDT
+    # Dogleg 优化方法类型，用于平衡梯度下降和牛顿步。
+    ceres_dogleg_type: TRADITIONAL_DOGLEG
+    # 不使用鲁棒损失函数；如果出现离群点不做额外抑制。
+    ceres_loss_function: None
+    # ROS Parameters
+    # 里程计坐标系，表示机器人相对里程计的位姿。
+    odom_frame: odom
+    # 全局地图坐标系，slam_toolbox 产生的地图基于这个坐标系。
+    map_frame: map
+    # 机器人基坐标系，通常是底盘中心或脚印位置。
+    base_frame: base_footprint
+    # 激光雷达扫描数据输入话题。
+    scan_topic: /scan
+    # 启用地图保存功能，可保存地图到文件。
+    use_map_saver: true
+    # 当前工作模式为建图；也可以切换为 localization（slam_toolbox定位模式）。
+    mode: mapping #localization
+    # if you'd like to immediately start continuing a map at a given pose
+    # or at the dock, but they are mutually exclusive, if pose is given
+    # will use pose
+    #map_file_name: test_steve
+    # map_start_pose: [0.0, 0.0, 0.0]
+    #map_start_at_dock: true
+    # 关闭调试日志输出，减少日志噪声。
+    debug_logging: false
+    # 扫描处理节流参数，设为 1 表示每帧扫描都处理。
+    throttle_scans: 1
+    # TF 坐标变换发布周期，0.02 秒约 50 Hz，表示频繁发布 TF。
+    transform_publish_period: 0.02 #if 0 never publishes odometry
+    # 地图更新间隔，5 秒更新一次地图。
+    map_update_interval: 5.0
+    # 地图分辨率，5 cm/格，地图细节和计算量取平衡。
+    resolution: 0.05
+    # 激光最小有效距离，低于这个值不会参与栅格化或处理。
+    min_laser_range: 0.16 #for rastering images
+    # 激光最大有效距离，超过这个范围的点不参与地图构建。
+    max_laser_range: 8.0 #for rastering images
+    # 最小时间间隔，控制扫描匹配或地图更新的最短时间间隔。
+    minimum_time_interval: 0.5
+    # TF 变换超时阈值，超过 0.2 秒认为变换不及时。
+    transform_timeout: 0.2
+    # TF 缓冲区保留 30 秒历史，方便追踪过去的坐标变换。
+    tf_buffer_duration: 30.
+    # 程序堆栈大小，单位大约是字节；设大一点是为了处理大地图/较复杂的序列化任务。
+    stack_size_to_use: 40000000 #// program needs a larger stack size to serialize large maps
+    # 启用交互模式，允许在 slam_toolbox 中手动交互式调整或观察状态。
+    enable_interactive_mode: true
+    # General Parameters
+    # 开启扫描匹配，用激光扫描之间的对齐来估计机器人位姿。
+    use_scan_matching: true
+    # 使用扫描点云重心（barycenter）来辅助匹配，常用于提高扫描对齐稳定性。
+    use_scan_barycenter: true
+    # 最小移动距离，只有机器人移动超过 0.1 m 才进行一次新的扫描匹配。
+    minimum_travel_distance: 0.1
+    # 最小转角阈值，只有旋转超过 0.1 rad 才触发新的扫描匹配。
+    minimum_travel_heading: 0.1
+    # 扫描缓冲区大小，保存最近 10 帧扫描数据用于匹配和回环判断。
+    scan_buffer_size: 10
+    # 扫描缓存中考虑的最大扫描距离，超过这个范围的旧扫描不会继续参与匹配。
+    scan_buffer_maximum_scan_distance: 10.0
+    # 精细匹配时，最小响应阈值；低于该值则认为匹配质量太差。
+    link_match_minimum_response_fine: 0.1  
+    # 扫描连接时允许的最大距离，控制是否把两次扫描认为属于同一场景。
+    link_scan_maximum_distance: 1.5
+    # 回环检测时的最大搜索距离，最多在 3 m 范围内找回环候选。
+    loop_search_maximum_distance: 3.0
+    # 开启回环闭合功能，用于纠正长期漂移导致的累计误差。
+    do_loop_closing: true 
+    # 回环检测需要至少 10 个节点/链条长度，才认为有足够历史可用于回环匹配。
+    loop_match_minimum_chain_size: 10           
+    # 粗匹配允许的最大方差上限；超过则认为该候选回环不可信。
+    loop_match_maximum_variance_coarse: 3.0  
+    # 粗匹配的最小响应阈值，只有响应高于这个值才认为可能是回环。
+    loop_match_minimum_response_coarse: 0.35    
+    # 精细匹配的最小响应阈值，要求更高质量的回环匹配。
+    loop_match_minimum_response_fine: 0.45
+    # Correlation Parameters - Correlation Parameters
+    # 相关搜索空间大小，控制扫描匹配搜索区域的尺寸。
+    correlation_search_space_dimension: 0.5
+    # 相关搜索的分辨率，搜索时每 0.01 m 作为一个采样尺度。
+    correlation_search_space_resolution: 0.01
+    # 相关搜索中的扩散偏差，用于放大搜索范围，帮助匹配偏移的扫描。
+    correlation_search_space_smear_deviation: 0.1 
+    # Correlation Parameters - Loop Closure Parameters
+    # 回环检测搜索空间维度，控制回环搜索范围的大小。
+    loop_search_space_dimension: 8.0
+    # 回环检测的搜索分辨率，通常以 0.05 的网格步长搜索。
+    loop_search_space_resolution: 0.05
+    # 回环搜索时的扩散偏差，用于增强候选搜索鲁棒性。
+    loop_search_space_smear_deviation: 0.03
+    # Scan Matcher Parameters
+    # 距离误差惩罚权重；位移误差越大，代价越高。
+    distance_variance_penalty: 0.5      
+    # 角度误差惩罚权重；角度偏差越大，代价越高。
+    angle_variance_penalty: 1.0    
+    # 精细匹配时的角度搜索偏移，约 0.2°，用于微调位姿。
+    fine_search_angle_offset: 0.00349     
+    # 粗匹配时的角度搜索偏移，约 20°，用于快速搜索大范围角度。
+    coarse_search_angle_offset: 0.349   
+    # 粗匹配时的角度分辨率，约 2°，控制搜索粒度。
+    coarse_angle_resolution: 0.0349        
+    # 最小角度惩罚值，避免角度误差太大时导致匹配失败。
+    minimum_angle_penalty: 0.9
+    # 最小距离惩罚值，限制位置偏差过大时的匹配接受度。
+    minimum_distance_penalty: 0.5
+    # 启用响应扩展，扩大有效匹配响应区域，增加匹配成功率。
+    use_response_expansion: true
+    # 最小穿过阈值，要求至少有 2 个扫描点通过判断标准。
+    min_pass_through: 2
+    # 栅格占用阈值，低于 0.1 认为该栅格几乎为空；高于它则认为被占用。
+    occupancy_threshold: 0.1

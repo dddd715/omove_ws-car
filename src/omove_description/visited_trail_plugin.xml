@@ -1,0 +1,5 @@
+<library path="visited_trail_layer">
+  <class type="omove_description::VisitedTrailLayer" base_class_type="nav2_costmap_2d::Layer">
+    <description>Decaying, traversable costs for recently visited positions.</description>
+  </class>
+</library>

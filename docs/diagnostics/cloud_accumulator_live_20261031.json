@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "motion_commands_sent": false,
+  "gui_checked": false,
+  "existing_converters": [
+    "scan_to_cloud"
+  ],
+  "existing_accumulators": [],
+  "input_messages": 27,
+  "assembled_messages": 3,
+  "frame_id": "odom",
+  "fields": [
+    "x",
+    "y",
+    "z"
+  ],
+  "latest_input_points": 360,
+  "assembled_points": 339,
+  "all_points_finite": true,
+  "cloud_publishers": [
+    "cloud_accumulator"
+  ]
+}

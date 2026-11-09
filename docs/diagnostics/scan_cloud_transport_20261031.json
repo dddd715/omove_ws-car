@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "domain": 93,
+  "motion_commands_sent": false,
+  "tests": [
+    "delayed TF + timestamp interpolation + invalid range filtering",
+    "future TF waits instead of falling back to latest",
+    "missing historical TF expires; valid scans resume",
+    "zero timestamp rejected for cross-frame projection"
+  ],
+  "transform_wait_seconds": 1.0
+}

@@ -1,0 +1,13 @@
+{
+  "success": true,
+  "domain": 92,
+  "motion_commands_sent": false,
+  "tests": [
+    "multi-frame union and latest point per voxel",
+    "late subscribers receive retained snapshot",
+    "PCD save service and overwrite protection",
+    "scan-time window expires old frames",
+    "moving/wrong input frame is rejected",
+    "clear service publishes empty retained snapshot"
+  ]
+}

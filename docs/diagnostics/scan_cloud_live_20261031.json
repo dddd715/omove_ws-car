@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "motion_commands_sent": false,
+  "gui_checked": false,
+  "existing_cloud_publishers": [],
+  "scan_messages": 23,
+  "cloud_messages": 10,
+  "frame_id": "odom",
+  "fields": [
+    "x",
+    "y",
+    "z"
+  ],
+  "points": 360,
+  "matching_scan_header": true,
+  "input_scan": [
+    "laser_link",
+    360
+  ],
+  "cloud_publishers": [
+    "scan_to_cloud"
+  ]
+}

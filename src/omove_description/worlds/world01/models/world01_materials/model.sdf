@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<sdf version="1.6">
+  <model name="world01_materials">
+    <static>true</static>
+    <link name="resource_anchor"/>
+  </model>
+</sdf>

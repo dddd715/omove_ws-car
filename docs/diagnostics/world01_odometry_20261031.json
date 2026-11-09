@@ -1,0 +1,99 @@
+{
+  "phases": [
+    {
+      "name": "forward",
+      "command": [
+        0.1,
+        0.0,
+        0.0
+      ],
+      "sim_seconds": 3.0,
+      "truth_delta": [
+        0.15994927952086616,
+        -4.9511296348683604e-05,
+        -4.463584641634204e-05
+      ],
+      "odom_delta": [
+        0.16303855757742247,
+        -0.00038964341071744964,
+        -0.00012482884717704768
+      ],
+      "end_truth": [
+        0.15995296532457273,
+        -1.0000499409156405,
+        -4.46247023318727e-05
+      ],
+      "height": -0.0010843694074827992,
+      "tilt_rad": 7.146345858741881e-08,
+      "scan_min": 1.452223300933838,
+      "position_error_m": 0.0031079460686996062,
+      "heading_error_rad": 8.019300076070564e-05,
+      "within_diagnostic_limits": true
+    },
+    {
+      "name": "lateral",
+      "command": [
+        0.0,
+        0.1,
+        0.0
+      ],
+      "sim_seconds": 3.0,
+      "truth_delta": [
+        0.0004546559165595341,
+        0.15671755607715215,
+        -0.0001617941345513143
+      ],
+      "odom_delta": [
+        0.0002469114163465855,
+        0.16440860000351323,
+        -4.790748895260299e-06
+      ],
+      "end_truth": [
+        0.16041461471496737,
+        -0.8433324052834141,
+        -0.000206418836883187
+      ],
+      "height": -0.0010846249752979736,
+      "tilt_rad": 5.185518455894443e-07,
+      "scan_min": 1.5677826404571533,
+      "position_error_m": 0.007693849131259618,
+      "heading_error_rad": 0.000157003385656054,
+      "within_diagnostic_limits": true
+    },
+    {
+      "name": "rotation",
+      "command": [
+        0.0,
+        0.0,
+        0.2
+      ],
+      "sim_seconds": 3.0,
+      "truth_delta": [
+        -5.8028624925251264e-05,
+        6.4518760817362e-05,
+        -0.0009071880187888003
+      ],
+      "odom_delta": [
+        0.001221339170150652,
+        -0.000877374299146307,
+        0.05908077682028176
+      ],
+      "end_truth": [
+        0.16035659940916586,
+        -0.8432678745457701,
+        -0.0011136068556719873
+      ],
+      "height": -0.0011014162550312678,
+      "tilt_rad": 1.2714978444572255e-06,
+      "scan_min": 1.5682920217514038,
+      "position_error_m": 0.0015886926988832994,
+      "heading_error_rad": 0.05998796483907057,
+      "within_diagnostic_limits": false
+    }
+  ],
+  "purpose": "diagnostic, not navigation acceptance",
+  "position_limit_m": 0.05,
+  "heading_limit_rad": 0.05,
+  "note": "Limits are diagnostic thresholds, not calibrated accuracy guarantees.",
+  "success": false
+}

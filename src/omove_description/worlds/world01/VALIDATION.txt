@@ -1,0 +1,5 @@
+Validation on packaging host:
+PASS: XML parses; all resource URIs resolve to bundled directories; all texture references exist.
+PASS: world XML is identical to source after reversing material URI/name substitutions (ignoring formatting).
+PASS: Bash syntax validation.
+Runtime attempt: Gazebo Classic 11.10.2 gzserver could not start because sandbox denies local network interface enumeration (getifaddrs: Operation not permitted). GUI rendering and live physics have not been verified here.

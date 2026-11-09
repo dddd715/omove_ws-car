@@ -1,0 +1,22 @@
+{
+  "runs": [],
+  "routes": [
+    {
+      "name": "forward_curve",
+      "pose": [
+        0.7102902460384648,
+        0.45742461742369445,
+        2.089920577458549
+      ]
+    },
+    {
+      "name": "return_curve",
+      "pose": [
+        1.1071862103043566,
+        -0.23717857400969364,
+        -1.051672076131244
+      ]
+    }
+  ],
+  "error": "Route footprint not clear: forward_curve"
+}

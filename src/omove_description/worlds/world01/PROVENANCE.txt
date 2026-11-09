@@ -1,0 +1,6 @@
+Original world: src/qingzhou_sim/qingzhou_gazebo/worlds/playground.world
+Original SHA256: df1dedc5f8874b10f3cf11d6f46053bdeb6b54b3af6a763e1f461579ff8c4b98
+Runtime on packaging host: Gazebo Classic 11.10.2; SDF 1.6.
+Bundled third-party resources: /usr/share/gazebo-11/media/materials/scripts/gazebo.material (Grey and CeilingTiled only), /usr/share/gazebo-11/media/materials/textures/ceiling_tiled.jpg.
+Changes: resource URIs point to bundled model resources; material names use World01/ namespace to avoid global name collisions. All other world content is preserved.
+See licenses/ for third-party copyright and Apache-2.0 license.
